@@ -45,14 +45,14 @@ export default function AuditLogPage() {
   }, [fetchLogs]);
 
   return (
-    <div className="flex-1 overflow-auto">
+    <div className="flex-1 overflow-auto bg-[#0A0A0B]">
       <Navbar title="Audit Log" />
       <div className="p-6 space-y-4">
         <div>
           <select
             value={actionFilter}
             onChange={(e) => setActionFilter(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-[#111114] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors"
           >
             <option value="">All Actions</option>
             {ACTIONS.map((a) => (
@@ -63,7 +63,7 @@ export default function AuditLogPage() {
 
         {loading ? (
           <div className="flex justify-center py-16">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-4 border-[#27272A] border-t-[#0A84FF] rounded-full animate-spin" />
           </div>
         ) : (
           <AuditTable logs={logs} />
@@ -74,15 +74,15 @@ export default function AuditLogPage() {
             <button
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
-              className="p-1 text-gray-500 hover:text-gray-800 disabled:opacity-30"
+              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
             >
               <ChevronLeft size={20} />
             </button>
-            <span className="text-sm text-gray-600">Page {page} of {totalPages}</span>
+            <span className="text-sm text-[#71717A]">Page {page} of {totalPages}</span>
             <button
               disabled={page === totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="p-1 text-gray-500 hover:text-gray-800 disabled:opacity-30"
+              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
             >
               <ChevronRight size={20} />
             </button>

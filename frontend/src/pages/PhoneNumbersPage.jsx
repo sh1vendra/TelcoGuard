@@ -42,7 +42,7 @@ export default function PhoneNumbersPage() {
   }, [fetchPhones]);
 
   return (
-    <div className="flex-1 overflow-auto">
+    <div className="flex-1 overflow-auto bg-[#0A0A0B]">
       <Navbar title="Phone Numbers" />
       <div className="p-6 space-y-4">
         <div className="flex items-center justify-between flex-wrap gap-3">
@@ -50,7 +50,7 @@ export default function PhoneNumbersPage() {
           {user?.role === 'admin' && (
             <button
               onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-lg transition-colors"
+              className="bg-[#0A84FF] hover:bg-[#0A84FF]/90 text-white text-sm px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
             >
               <Plus size={16} />
               Add Number
@@ -60,7 +60,7 @@ export default function PhoneNumbersPage() {
 
         {loading ? (
           <div className="flex justify-center py-16">
-            <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-4 border-[#27272A] border-t-[#0A84FF] rounded-full animate-spin" />
           </div>
         ) : (
           <PhoneTable phones={phones} />
@@ -71,17 +71,17 @@ export default function PhoneNumbersPage() {
             <button
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
-              className="p-1 text-gray-500 hover:text-gray-800 disabled:opacity-30"
+              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
             >
               <ChevronLeft size={20} />
             </button>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-[#71717A]">
               Page {page} of {totalPages}
             </span>
             <button
               disabled={page === totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="p-1 text-gray-500 hover:text-gray-800 disabled:opacity-30"
+              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
             >
               <ChevronRight size={20} />
             </button>

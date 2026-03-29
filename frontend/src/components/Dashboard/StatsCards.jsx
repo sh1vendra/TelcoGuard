@@ -1,18 +1,11 @@
 import { Phone, ArrowLeftRight, ShieldAlert, CheckCircle } from 'lucide-react';
 
 const cards = [
-  { key: 'total', label: 'Total Numbers', icon: Phone, color: 'blue' },
-  { key: 'porting', label: 'Active Porting', icon: ArrowLeftRight, color: 'orange' },
-  { key: 'fraud', label: 'Fraud Alerts', icon: ShieldAlert, color: 'red' },
-  { key: 'available', label: 'Available', icon: CheckCircle, color: 'green' },
+  { key: 'total', label: 'Total Numbers', icon: Phone, iconColor: 'text-[#0A84FF]', iconBg: 'bg-[#0A84FF]/10' },
+  { key: 'porting', label: 'Active Porting', icon: ArrowLeftRight, iconColor: 'text-amber-400', iconBg: 'bg-amber-400/10' },
+  { key: 'fraud', label: 'Fraud Alerts', icon: ShieldAlert, iconColor: 'text-red-400', iconBg: 'bg-red-400/10' },
+  { key: 'available', label: 'Available', icon: CheckCircle, iconColor: 'text-emerald-400', iconBg: 'bg-emerald-400/10' },
 ];
-
-const colorMap = {
-  blue: { bg: 'bg-blue-50', icon: 'text-blue-600', text: 'text-blue-700' },
-  orange: { bg: 'bg-orange-50', icon: 'text-orange-600', text: 'text-orange-700' },
-  red: { bg: 'bg-red-50', icon: 'text-red-600', text: 'text-red-700' },
-  green: { bg: 'bg-green-50', icon: 'text-green-600', text: 'text-green-700' },
-};
 
 export default function StatsCards({ stats }) {
   const values = {
@@ -24,20 +17,17 @@ export default function StatsCards({ stats }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {cards.map(({ key, label, icon: Icon, color }) => {
-        const c = colorMap[color];
-        return (
-          <div key={key} className="bg-white rounded-xl shadow-sm p-5 flex items-center gap-4">
-            <div className={`${c.bg} p-3 rounded-lg`}>
-              <Icon className={c.icon} size={22} />
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-gray-800">{values[key]}</div>
-              <div className="text-sm text-gray-500">{label}</div>
+      {cards.map(({ key, label, icon: Icon, iconColor, iconBg }) => (
+        <div key={key} className="bg-[#111114] border border-[#27272A] rounded-xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-medium text-[#71717A] uppercase tracking-widest">{label}</span>
+            <div className={`${iconBg} p-2 rounded-lg`}>
+              <Icon className={iconColor} size={16} />
             </div>
           </div>
-        );
-      })}
+          <div className="text-3xl font-bold text-[#E4E4E7] tabular-nums">{values[key]}</div>
+        </div>
+      ))}
     </div>
   );
 }

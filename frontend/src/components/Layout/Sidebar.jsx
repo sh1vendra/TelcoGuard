@@ -30,37 +30,44 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 bg-gray-900 text-white flex flex-col min-h-screen">
-      <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-700">
-        <Shield className="text-blue-400" size={24} />
-        <span className="text-lg font-bold tracking-wide">TelcoGuard</span>
+    <aside className="w-64 bg-[#0A0A0B] border-r border-[#27272A] flex flex-col min-h-screen">
+      <div className="flex items-center gap-2.5 px-6 py-5 border-b border-[#27272A]">
+        <Shield className="text-[#0A84FF]" size={20} />
+        <span className="text-[#E4E4E7] text-xs font-bold tracking-[0.15em] uppercase">TELCOGUARD NOC</span>
       </div>
 
-      <nav className="flex-1 py-4">
+      <nav className="flex-1 py-3">
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}
             to={to}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-6 py-3 text-sm transition-colors ${
+              `relative flex items-center gap-3 px-6 py-3 text-sm transition-colors ${
                 isActive
-                  ? 'bg-blue-600 text-white'
-                  : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  ? 'bg-[#111114] text-[#0A84FF]'
+                  : 'text-[#71717A] hover:bg-[#111114] hover:text-[#A1A1AA]'
               }`
             }
           >
-            <Icon size={18} />
-            {label}
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-[#0A84FF] rounded-r" />
+                )}
+                <Icon size={18} />
+                {label}
+              </>
+            )}
           </NavLink>
         ))}
       </nav>
 
-      <div className="px-6 py-4 border-t border-gray-700">
-        <div className="text-xs text-gray-400 mb-1">{user?.name}</div>
-        <div className="text-xs text-gray-500 capitalize mb-3">{user?.role}</div>
+      <div className="px-6 py-4 border-t border-[#27272A]">
+        <div className="text-xs font-medium text-[#E4E4E7] mb-0.5">{user?.name}</div>
+        <div className="text-xs text-[#71717A] capitalize mb-3">{user?.role}</div>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-sm text-[#71717A] hover:text-red-400 transition-colors"
         >
           <LogOut size={16} />
           Logout
