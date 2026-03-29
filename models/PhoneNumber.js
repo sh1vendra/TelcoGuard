@@ -14,7 +14,6 @@ const PhoneNumberSchema = new mongoose.Schema({
   notes: { type: String },
 }, { timestamps: true });
 
-PhoneNumberSchema.index({ number: 1 });
 PhoneNumberSchema.index({ areaCode: 1 });
 PhoneNumberSchema.index({ status: 1 });
 
