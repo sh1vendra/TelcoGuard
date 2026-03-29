@@ -17,7 +17,7 @@ const PhoneNumberSchema = new mongoose.Schema({
 PhoneNumberSchema.index({ areaCode: 1 });
 PhoneNumberSchema.index({ status: 1 });
 
-PhoneNumberSchema.pre('save', function (next) {
+PhoneNumberSchema.pre('save', function () {
   if (this.isModified('number')) {
     const digits = this.number.replace(/\D/g, '');
     if (digits.length === 11 && digits[0] === '1') {
@@ -26,7 +26,6 @@ PhoneNumberSchema.pre('save', function (next) {
       this.areaCode = digits.substring(0, 3);
     }
   }
-  next();
 });
 
 module.exports = mongoose.model('PhoneNumber', PhoneNumberSchema);
