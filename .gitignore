@@ -6,12 +6,3 @@ node_modules/
 dist/
 build/
 *.log
-npm-debug.log*
-coverage/
-.vscode/
-.idea/
-*.swp
-*.swo
-.nyc_output/
-tmp/
-temp/
