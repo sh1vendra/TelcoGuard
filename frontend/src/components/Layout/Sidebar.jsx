@@ -6,7 +6,6 @@ import {
   ShieldAlert,
   ClipboardList,
   LogOut,
-  Shield,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -40,10 +39,7 @@ export default function Sidebar() {
     <aside className="w-60 bg-white dark:bg-[#18181B] border-r border-gray-200 dark:border-[#27272A] flex flex-col min-h-screen transition-colors duration-200">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-5 h-14 border-b border-gray-200 dark:border-[#27272A]">
-        <Shield className="text-blue-600 dark:text-blue-400 shrink-0" size={18} strokeWidth={2} />
-        <span className="text-sm font-semibold text-gray-900 dark:text-[#F4F4F5] tracking-tight">
-          TelcoGuard
-        </span>
+        <img src="/Telcoguard-logo.png" alt="TelcoGuard" className="h-7 w-auto shrink-0" />
       </div>
 
       {/* Nav */}
