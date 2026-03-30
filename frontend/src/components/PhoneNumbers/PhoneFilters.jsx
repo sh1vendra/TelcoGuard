@@ -4,7 +4,7 @@ export default function PhoneFilters({ filters, onChange }) {
       <select
         value={filters.status}
         onChange={(e) => onChange({ ...filters, status: e.target.value })}
-        className="bg-[#111114] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors"
+        className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
       >
         <option value="">All Statuses</option>
         <option value="available">Available</option>
@@ -16,7 +16,7 @@ export default function PhoneFilters({ filters, onChange }) {
       <select
         value={filters.type}
         onChange={(e) => onChange({ ...filters, type: e.target.value })}
-        className="bg-[#111114] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors"
+        className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
       >
         <option value="">All Types</option>
         <option value="local">Local</option>
@@ -29,7 +29,7 @@ export default function PhoneFilters({ filters, onChange }) {
         placeholder="Search number, carrier, customer..."
         value={filters.search}
         onChange={(e) => onChange({ ...filters, search: e.target.value })}
-        className="bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors w-64 placeholder:text-[#71717A]"
+        className="w-full bg-white dark:bg-[#09090B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3.5 py-2.5 text-sm text-gray-900 dark:text-[#F4F4F5] placeholder-gray-400 dark:placeholder-[#52525B] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-colors w-64"
       />
     </div>
   );

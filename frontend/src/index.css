@@ -1,13 +1,29 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@variant dark (&:is(.dark, .dark *));
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+html {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
 html, body, #root {
   min-height: 100%;
-  background-color: #0A0A0B;
-  color: #E4E4E7;
+  transition: background-color 0.2s ease;
+}
+
+body {
+  background-color: #FAFAFA;
+  color: #111827;
+}
+
+html.dark body {
+  background-color: #09090B;
+  color: #F4F4F5;
 }
 
 ::-webkit-scrollbar {
@@ -15,12 +31,18 @@ html, body, #root {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0B;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
+  background: #D1D5DB;
   border-radius: 3px;
 }
+html.dark ::-webkit-scrollbar-thumb {
+  background: #27272A;
+}
 ::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
   background: #3F3F46;
 }

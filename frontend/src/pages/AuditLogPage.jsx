@@ -45,14 +45,14 @@ export default function AuditLogPage() {
   }, [fetchLogs]);
 
   return (
-    <div className="flex-1 overflow-auto bg-[#0A0A0B]">
+    <div className="flex-1 overflow-auto bg-[#FAFAFA] dark:bg-[#09090B] transition-colors duration-200">
       <Navbar title="Audit Log" />
-      <div className="p-6 space-y-4">
+      <div className="p-6 max-w-[1280px] mx-auto space-y-5">
         <div>
           <select
             value={actionFilter}
             onChange={(e) => setActionFilter(e.target.value)}
-            className="bg-[#111114] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors"
+            className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
           >
             <option value="">All Actions</option>
             {ACTIONS.map((a) => (
@@ -62,8 +62,15 @@ export default function AuditLogPage() {
         </div>
 
         {loading ? (
-          <div className="flex justify-center py-16">
-            <div className="w-8 h-8 border-4 border-[#27272A] border-t-[#0A84FF] rounded-full animate-spin" />
+          <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm overflow-hidden animate-pulse">
+            <div className="border-b border-gray-200 dark:border-[#27272A] bg-gray-50 dark:bg-white/[0.02] h-12" />
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="border-b border-gray-100 dark:border-[#27272A]/40 last:border-0 h-14 flex items-center px-4 gap-4">
+                <div className="h-3 bg-gray-100 dark:bg-[#27272A] rounded w-32" />
+                <div className="h-3 bg-gray-100 dark:bg-[#27272A] rounded w-20" />
+                <div className="h-5 bg-gray-100 dark:bg-[#27272A] rounded-md w-16" />
+              </div>
+            ))}
           </div>
         ) : (
           <AuditTable logs={logs} />
@@ -74,17 +81,17 @@ export default function AuditLogPage() {
             <button
               disabled={page === 1}
               onClick={() => setPage((p) => p - 1)}
-              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
+              className="p-1.5 text-gray-400 dark:text-[#71717A] hover:text-gray-600 dark:hover:text-[#A1A1AA] disabled:opacity-30 transition-colors"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} />
             </button>
-            <span className="text-sm text-[#71717A]">Page {page} of {totalPages}</span>
+            <span className="text-sm text-gray-500 dark:text-[#71717A]">Page {page} of {totalPages}</span>
             <button
               disabled={page === totalPages}
               onClick={() => setPage((p) => p + 1)}
-              className="p-1 text-[#71717A] hover:text-[#E4E4E7] disabled:opacity-30"
+              className="p-1.5 text-gray-400 dark:text-[#71717A] hover:text-gray-600 dark:hover:text-[#A1A1AA] disabled:opacity-30 transition-colors"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </button>
           </div>
         )}

@@ -1,48 +1,48 @@
 const ACTION_BADGE = {
-  NUMBER_PROVISIONED: 'bg-emerald-400/10 text-emerald-400',
-  NUMBER_UPDATED: 'bg-[#0A84FF]/10 text-[#0A84FF]',
-  NUMBER_STATUS_CHANGED: 'bg-amber-400/10 text-amber-400',
-  PORT_REQUESTED: 'bg-purple-400/10 text-purple-400',
-  PORT_APPROVED: 'bg-emerald-400/10 text-emerald-400',
-  PORT_REJECTED: 'bg-red-400/10 text-red-400',
-  FRAUD_RESOLVED: 'bg-orange-400/10 text-orange-400',
+  NUMBER_PROVISIONED: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
+  NUMBER_UPDATED: 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400',
+  NUMBER_STATUS_CHANGED: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400',
+  PORT_REQUESTED: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400',
+  PORT_APPROVED: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
+  PORT_REJECTED: 'bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-400',
+  FRAUD_RESOLVED: 'bg-orange-50 dark:bg-orange-500/10 text-orange-700 dark:text-orange-400',
 };
 
 export default function AuditTable({ logs }) {
   if (!logs || logs.length === 0) {
     return (
-      <div className="bg-[#111114] border border-[#27272A] rounded-xl p-12 text-center text-[#71717A]">
+      <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm p-12 text-center text-gray-400 dark:text-[#71717A] text-sm">
         No audit logs found.
       </div>
     );
   }
 
   return (
-    <div className="bg-[#111114] border border-[#27272A] rounded-xl overflow-hidden">
+    <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm overflow-hidden">
       <table className="w-full text-sm">
-        <thead className="border-b border-[#27272A]">
+        <thead>
           <tr>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Action</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Performed By</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Target</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Details</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Timestamp</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Action</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Performed By</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Target</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Details</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Timestamp</th>
           </tr>
         </thead>
         <tbody>
           {logs.map((log) => (
-            <tr key={log._id} className="border-b border-[#27272A]/50 last:border-0 hover:bg-[#17171A] transition-colors">
-              <td className="px-4 py-3">
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${ACTION_BADGE[log.action] || 'bg-zinc-500/20 text-zinc-400'}`}>
+            <tr key={log._id} className="border-b border-gray-100 dark:border-[#27272A]/40 last:border-0 hover:bg-gray-50/80 dark:hover:bg-white/[0.02] transition-colors duration-150">
+              <td className="px-4 py-3.5">
+                <span className={`text-xs px-2 py-0.5 rounded-md font-medium ${ACTION_BADGE[log.action] || 'bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#71717A]'}`}>
                   {log.action?.replace(/_/g, ' ')}
                 </span>
               </td>
-              <td className="px-4 py-3 text-sm text-[#E4E4E7]">{log.user?.name || '—'}</td>
-              <td className="px-4 py-3 text-xs text-[#71717A]">{log.targetType || '—'}</td>
-              <td className="px-4 py-3 text-xs text-[#71717A] max-w-xs truncate">
+              <td className="px-4 py-3.5 text-sm text-gray-900 dark:text-[#F4F4F5]">{log.user?.name || '—'}</td>
+              <td className="px-4 py-3.5 text-sm text-gray-400 dark:text-[#71717A]">{log.targetType || '—'}</td>
+              <td className="px-4 py-3.5 text-sm text-gray-400 dark:text-[#71717A] max-w-xs truncate">
                 {log.details ? JSON.stringify(log.details) : '—'}
               </td>
-              <td className="px-4 py-3 text-xs text-[#71717A]">
+              <td className="px-4 py-3.5 text-sm text-gray-400 dark:text-[#71717A]">
                 {log.timestamp ? new Date(log.timestamp).toLocaleString() : '—'}
               </td>
             </tr>

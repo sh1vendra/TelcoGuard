@@ -30,22 +30,22 @@ export default function NewPortingModal({ onClose, onCreated }) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-[#111114] border border-[#27272A] rounded-xl w-full max-w-md p-6">
+    <div className="fixed inset-0 bg-black/30 dark:bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl w-full max-w-md p-6 shadow-2xl">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-base font-semibold text-[#E4E4E7]">New Porting Request</h2>
-          <button onClick={onClose} className="text-[#71717A] hover:text-[#E4E4E7]">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-[#F4F4F5]">New Porting Request</h2>
+          <button onClick={onClose} className="text-gray-400 dark:text-[#71717A] hover:text-gray-600 dark:hover:text-[#A1A1AA] transition-colors">
             <X size={20} />
           </button>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1.5">Phone Number *</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1.5">Phone Number *</label>
             <select
               required
               value={form.phoneNumber}
               onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors"
+              className="w-full bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3 py-2 text-sm text-gray-700 dark:text-[#A1A1AA] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
             >
               <option value="">Select number...</option>
               {phones.map((p) => (
@@ -56,42 +56,42 @@ export default function NewPortingModal({ onClose, onCreated }) {
             </select>
           </div>
           <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1.5">From Carrier *</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1.5">From Carrier *</label>
             <input
               required
               value={form.fromCarrier}
               onChange={(e) => setForm({ ...form, fromCarrier: e.target.value })}
               placeholder="Current carrier"
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors placeholder:text-[#71717A]"
+              className="w-full bg-white dark:bg-[#09090B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3.5 py-2.5 text-sm text-gray-900 dark:text-[#F4F4F5] placeholder-gray-400 dark:placeholder-[#52525B] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1.5">To Carrier *</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1.5">To Carrier *</label>
             <input
               required
               value={form.toCarrier}
               onChange={(e) => setForm({ ...form, toCarrier: e.target.value })}
               placeholder="New carrier"
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors placeholder:text-[#71717A]"
+              className="w-full bg-white dark:bg-[#09090B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3.5 py-2.5 text-sm text-gray-900 dark:text-[#F4F4F5] placeholder-gray-400 dark:placeholder-[#52525B] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-colors"
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-1.5">Notes</label>
+            <label className="block text-sm font-medium text-gray-700 dark:text-[#A1A1AA] mb-1.5">Notes</label>
             <textarea
               rows={2}
               value={form.notes}
               onChange={(e) => setForm({ ...form, notes: e.target.value })}
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-3 py-2 text-sm text-[#E4E4E7] focus:outline-none focus:border-[#0A84FF] transition-colors resize-none placeholder:text-[#71717A]"
+              className="w-full bg-white dark:bg-[#09090B] border border-gray-200 dark:border-[#27272A] rounded-lg px-3.5 py-2.5 text-sm text-gray-900 dark:text-[#F4F4F5] placeholder-gray-400 dark:placeholder-[#52525B] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-500 transition-colors resize-none"
             />
           </div>
           <div className="flex justify-end gap-3 pt-2">
-            <button type="button" onClick={onClose} className="px-4 py-2 text-sm text-[#71717A] hover:text-[#E4E4E7] transition-colors">
+            <button type="button" onClick={onClose} className="px-4 py-2 text-sm text-gray-600 dark:text-[#A1A1AA] hover:text-gray-900 dark:hover:text-[#F4F4F5] transition-colors">
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-[#0A84FF] text-white text-sm rounded-lg hover:bg-[#0A84FF]/90 disabled:opacity-40 transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2.5 rounded-lg transition-colors disabled:opacity-50"
             >
               {loading ? 'Submitting...' : 'Submit'}
             </button>

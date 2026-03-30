@@ -3,11 +3,11 @@ import api from '../../api/axios';
 import toast from 'react-hot-toast';
 
 const STATUS_BADGE = {
-  pending: 'bg-amber-400/10 text-amber-400',
-  approved: 'bg-emerald-400/10 text-emerald-400',
-  rejected: 'bg-red-400/10 text-red-400',
-  completed: 'bg-[#0A84FF]/10 text-[#0A84FF]',
-  flagged: 'bg-red-400/10 text-red-400',
+  pending: 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400',
+  approved: 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
+  rejected: 'bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-400',
+  completed: 'bg-violet-50 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400',
+  flagged: 'bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-400',
 };
 
 export default function PortingTable({ requests, isAdmin, onRefresh }) {
@@ -35,61 +35,61 @@ export default function PortingTable({ requests, isAdmin, onRefresh }) {
 
   if (!requests || requests.length === 0) {
     return (
-      <div className="bg-[#111114] border border-[#27272A] rounded-xl p-12 text-center text-[#71717A]">
+      <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm p-12 text-center text-gray-400 dark:text-[#71717A] text-sm">
         No porting requests found.
       </div>
     );
   }
 
   return (
-    <div className="bg-[#111114] border border-[#27272A] rounded-xl overflow-hidden">
+    <div className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm overflow-hidden">
       <table className="w-full text-sm">
-        <thead className="border-b border-[#27272A]">
+        <thead>
           <tr>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Phone Number</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">From</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">To</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Status</th>
-            <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Date</th>
-            {isAdmin && <th className="text-left px-4 py-3 text-xs font-semibold text-[#71717A] uppercase tracking-wider bg-[#111114]">Actions</th>}
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Phone Number</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">From</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">To</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Status</th>
+            <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Date</th>
+            {isAdmin && <th className="text-left px-4 py-3.5 text-xs font-semibold text-gray-500 dark:text-[#71717A] uppercase tracking-wider bg-gray-50 dark:bg-white/[0.02] border-b border-gray-200 dark:border-[#27272A]">Actions</th>}
           </tr>
         </thead>
         <tbody>
           {requests.map((req) => (
             <tr
               key={req._id}
-              className={`border-b border-[#27272A]/50 last:border-0 transition-colors ${req.flagged ? 'bg-red-400/5 hover:bg-red-400/10' : 'hover:bg-[#17171A]'}`}
+              className={`border-b border-gray-100 dark:border-[#27272A]/40 last:border-0 transition-colors duration-150 ${req.flagged ? 'bg-red-50/50 dark:bg-red-500/5 hover:bg-red-50 dark:hover:bg-red-500/[0.08]' : 'hover:bg-gray-50/80 dark:hover:bg-white/[0.02]'}`}
             >
-              <td className="px-4 py-3 font-mono text-sm text-[#E4E4E7]">
-                <span className="flex items-center gap-1">
+              <td className="px-4 py-3.5 font-mono text-sm text-gray-900 dark:text-[#F4F4F5]">
+                <span className="flex items-center gap-1.5">
                   {req.phoneNumber?.number || '—'}
-                  {req.flagged && <Flag size={12} className="text-red-400" />}
+                  {req.flagged && <Flag size={12} className="text-red-500 dark:text-red-400" />}
                 </span>
               </td>
-              <td className="px-4 py-3 text-sm text-[#A1A1AA]">{req.fromCarrier}</td>
-              <td className="px-4 py-3 text-sm text-[#A1A1AA]">{req.toCarrier}</td>
-              <td className="px-4 py-3">
-                <span className={`text-xs px-2 py-0.5 rounded-full font-medium capitalize ${STATUS_BADGE[req.status] || 'bg-zinc-500/20 text-zinc-400'}`}>
+              <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-[#A1A1AA]">{req.fromCarrier}</td>
+              <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-[#A1A1AA]">{req.toCarrier}</td>
+              <td className="px-4 py-3.5">
+                <span className={`text-xs px-2 py-0.5 rounded-md font-medium capitalize ${STATUS_BADGE[req.status] || 'bg-gray-100 dark:bg-[#27272A] text-gray-600 dark:text-[#71717A]'}`}>
                   {req.status}
                 </span>
               </td>
-              <td className="px-4 py-3 text-sm text-[#A1A1AA]">
+              <td className="px-4 py-3.5 text-sm text-gray-600 dark:text-[#A1A1AA]">
                 {req.requestedAt ? new Date(req.requestedAt).toLocaleDateString() : '—'}
               </td>
               {isAdmin && (
-                <td className="px-4 py-3">
+                <td className="px-4 py-3.5">
                   {(req.status === 'pending' || req.status === 'flagged') && (
-                    <div className="flex gap-2">
+                    <div className="flex gap-1">
                       <button
                         onClick={(e) => handleApprove(req._id, e)}
-                        className="p-1 text-emerald-400 hover:text-emerald-300"
+                        className="p-1.5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
                         title="Approve"
                       >
                         <Check size={16} />
                       </button>
                       <button
                         onClick={(e) => handleReject(req._id, e)}
-                        className="p-1 text-red-400 hover:text-red-300"
+                        className="p-1.5 text-red-500 dark:text-red-400 hover:text-red-600 dark:hover:text-red-300 transition-colors"
                         title="Reject"
                       >
                         <X size={16} />

@@ -1,10 +1,34 @@
 import { Phone, ArrowLeftRight, ShieldAlert, CheckCircle } from 'lucide-react';
 
 const cards = [
-  { key: 'total', label: 'Total Numbers', icon: Phone, iconColor: 'text-[#0A84FF]', iconBg: 'bg-[#0A84FF]/10' },
-  { key: 'porting', label: 'Active Porting', icon: ArrowLeftRight, iconColor: 'text-amber-400', iconBg: 'bg-amber-400/10' },
-  { key: 'fraud', label: 'Fraud Alerts', icon: ShieldAlert, iconColor: 'text-red-400', iconBg: 'bg-red-400/10' },
-  { key: 'available', label: 'Available', icon: CheckCircle, iconColor: 'text-emerald-400', iconBg: 'bg-emerald-400/10' },
+  {
+    key: 'total',
+    label: 'Total Numbers',
+    icon: Phone,
+    iconBg: 'bg-blue-50 dark:bg-blue-500/10',
+    iconColor: 'text-blue-600 dark:text-blue-400',
+  },
+  {
+    key: 'porting',
+    label: 'Active Porting',
+    icon: ArrowLeftRight,
+    iconBg: 'bg-amber-50 dark:bg-amber-500/10',
+    iconColor: 'text-amber-600 dark:text-amber-400',
+  },
+  {
+    key: 'fraud',
+    label: 'Fraud Alerts',
+    icon: ShieldAlert,
+    iconBg: 'bg-red-50 dark:bg-red-500/10',
+    iconColor: 'text-red-600 dark:text-red-400',
+  },
+  {
+    key: 'available',
+    label: 'Available',
+    icon: CheckCircle,
+    iconBg: 'bg-emerald-50 dark:bg-emerald-500/10',
+    iconColor: 'text-emerald-600 dark:text-emerald-400',
+  },
 ];
 
 export default function StatsCards({ stats }) {
@@ -17,15 +41,20 @@ export default function StatsCards({ stats }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {cards.map(({ key, label, icon: Icon, iconColor, iconBg }) => (
-        <div key={key} className="bg-[#111114] border border-[#27272A] rounded-xl p-5">
+      {cards.map(({ key, label, icon: Icon, iconBg, iconColor }) => (
+        <div
+          key={key}
+          className="bg-white dark:bg-[#18181B] border border-gray-200 dark:border-[#27272A] rounded-xl shadow-sm p-5 hover:shadow-md transition-shadow duration-150"
+        >
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-medium text-[#71717A] uppercase tracking-widest">{label}</span>
+            <span className="text-xs font-medium text-gray-500 dark:text-[#71717A]">{label}</span>
             <div className={`${iconBg} p-2 rounded-lg`}>
-              <Icon className={iconColor} size={16} />
+              <Icon className={iconColor} size={16} strokeWidth={1.75} />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#E4E4E7] tabular-nums">{values[key]}</div>
+          <div className="text-[28px] font-semibold text-gray-900 dark:text-[#F4F4F5] tabular-nums leading-none">
+            {values[key]}
+          </div>
         </div>
       ))}
     </div>

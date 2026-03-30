@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-6 text-red-400 bg-red-400/10 border border-red-400/20 rounded-lg m-4">
+        <div className="p-6 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-400/10 border border-red-200 dark:border-red-400/20 rounded-xl m-4 text-sm">
           Something went wrong in this section. Please refresh.
         </div>
       );
@@ -35,7 +35,7 @@ class ErrorBoundary extends React.Component {
 
 function AppLayout({ children }) {
   return (
-    <div className="flex min-h-screen bg-[#0A0A0B]">
+    <div className="flex min-h-screen bg-[#FAFAFA] dark:bg-[#09090B] transition-colors duration-200">
       <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <ErrorBoundary>{children}</ErrorBoundary>
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Toaster position="top-right" toastOptions={{ style: { background: '#111114', color: '#E4E4E7', border: '1px solid #27272A' } }} />
+        <Toaster position="top-right" toastOptions={{ className: '', style: { fontFamily: 'Inter, system-ui, sans-serif', fontSize: '14px', borderRadius: '10px' } }} />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

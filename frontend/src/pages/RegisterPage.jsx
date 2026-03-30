@@ -25,66 +25,84 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0B] flex items-center justify-center p-8">
-      <div className="bg-[#111114] border border-[#27272A] rounded-xl p-8 w-full max-w-sm">
-        <div className="flex items-center gap-2.5 mb-8">
-          <Shield className="text-[#0A84FF]" size={20} />
-          <span className="text-[#E4E4E7] text-xs font-bold tracking-[0.15em] uppercase">TelcoGuard NOC</span>
+    <div className="min-h-screen flex">
+      {/* Left: Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center bg-white px-8 py-12">
+        <div className="w-full max-w-sm">
+          <div className="flex items-center gap-2 mb-10">
+            <Shield className="text-blue-600" size={20} strokeWidth={2} />
+            <span className="text-sm font-semibold text-gray-900 tracking-tight">TelcoGuard</span>
+          </div>
+
+          <h1 className="text-2xl font-semibold text-gray-900 mb-1">Create an account</h1>
+          <p className="text-sm text-gray-500 mb-8">Get started with TelcoGuard today</p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Full name</label>
+              <input
+                type="text"
+                required
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
+                placeholder="Jane Smith"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email address</label>
+              <input
+                type="email"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
+                placeholder="you@company.com"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+              <input
+                type="password"
+                required
+                minLength={6}
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                className="w-full bg-white border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-colors"
+                placeholder="At least 6 characters"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2.5 rounded-lg transition-colors disabled:opacity-50 mt-2"
+            >
+              {loading ? 'Creating account…' : 'Create account'}
+            </button>
+          </form>
+
+          <p className="text-sm text-gray-500 text-center mt-6">
+            Already have an account?{' '}
+            <Link to="/login" className="text-blue-600 hover:text-blue-700 font-medium">
+              Sign in
+            </Link>
+          </p>
         </div>
+      </div>
 
-        <h2 className="text-xl font-bold text-[#E4E4E7] mb-1">Create account</h2>
-        <p className="text-[#71717A] text-sm mb-7">Register for NOC access</p>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-2">Full Name</label>
-            <input
-              type="text"
-              required
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-4 py-2.5 text-sm text-[#E4E4E7] placeholder-[#3F3F46] focus:outline-none focus:border-[#0A84FF] transition-colors"
-              placeholder="John Doe"
-            />
+      {/* Right: Brand panel */}
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-blue-600 via-blue-700 to-violet-700 items-center justify-center p-12 relative overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-white/5 rounded-full" />
+        <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-white/5 rounded-full" />
+        <div className="relative z-10 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
+            <Shield className="text-white" size={32} strokeWidth={1.5} />
           </div>
-          <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-2">Email Address</label>
-            <input
-              type="email"
-              required
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-4 py-2.5 text-sm text-[#E4E4E7] placeholder-[#3F3F46] focus:outline-none focus:border-[#0A84FF] transition-colors"
-              placeholder="you@example.com"
-            />
-          </div>
-          <div>
-            <label className="block text-xs font-medium text-[#A1A1AA] uppercase tracking-wide mb-2">Password</label>
-            <input
-              type="password"
-              required
-              minLength={6}
-              value={form.password}
-              onChange={(e) => setForm({ ...form, password: e.target.value })}
-              className="w-full bg-[#0A0A0B] border border-[#27272A] rounded-lg px-4 py-2.5 text-sm text-[#E4E4E7] placeholder-[#3F3F46] focus:outline-none focus:border-[#0A84FF] transition-colors"
-              placeholder="Min 6 characters"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-[#0A84FF] hover:bg-[#0A84FF]/90 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors disabled:opacity-40 mt-2"
-          >
-            {loading ? 'Creating account...' : 'Create Account'}
-          </button>
-        </form>
-
-        <p className="text-[#71717A] text-xs mt-7 text-center">
-          Already have an account?{' '}
-          <Link to="/login" className="text-[#0A84FF] hover:text-[#0A84FF]/80 transition-colors">
-            Sign in
-          </Link>
-        </p>
+          <h2 className="text-3xl font-semibold text-white mb-3">TelcoGuard</h2>
+          <p className="text-blue-100 text-base leading-relaxed max-w-xs mx-auto">
+            Network operations and fraud detection for modern telecom infrastructure.
+          </p>
+        </div>
       </div>
     </div>
   );
